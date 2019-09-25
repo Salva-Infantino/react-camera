@@ -1,20 +1,27 @@
-import React, { Component } from "react";
-import Camera from "react-html5-camera-photo";
-import "react-html5-camera-photo/build/css/index.css";
+import React from "react";
 
 export default function App() {
-  const onTakePhoto = dataUri => {
-    // Do stuff with the dataUri photo...
-    console.log(dataUri);
+  const onloadHandler = ev => {
+    let input = ev.target;
+    var freader = new FileReader();
+    freader.onload = () => {
+      let preview = document.querySelector("#preview");
+      preview.setAttribute("src", freader.result);
+      console.log(freader.result);
+    };
+    freader.readAsDataURL(input.files[0]);
   };
-
   return (
     <div className="App">
-      <Camera
-        onTakePhoto={dataUri => {
-          onTakePhoto(dataUri);
-        }}
+      <h1>Image upload preview</h1>
+      <input
+        type="file"
+        name="file"
+        accept="image/*"
+        capture="camera"
+        onChange={onloadHandler}
       />
+      <img src="" id="preview" alt="" />
     </div>
   );
 }
