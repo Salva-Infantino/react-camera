@@ -5,9 +5,11 @@ export default function App() {
     let input = ev.target;
     var freader = new FileReader();
     freader.onload = () => {
+      const resultat = document.querySelector(".resultat");
       let preview = document.querySelector("#preview");
       preview.setAttribute("src", freader.result);
-      console.log(freader.result);
+      resultat.innerHTML = freader.result;
+      //console.log(freader.result);
     };
     freader.readAsDataURL(input.files[0]);
   };
@@ -21,7 +23,9 @@ export default function App() {
         capture="camera"
         onChange={onloadHandler}
       />
-      <img src="" id="preview" alt="" />
+      <img src="" id="preview" alt="" width="250" height="250" />
+
+      <p className="resultat"></p>
     </div>
   );
 }
