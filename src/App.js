@@ -5,10 +5,10 @@ export default function App() {
     let input = ev.target;
     var freader = new FileReader();
     freader.onload = () => {
-      const resultat = document.querySelector(".resultat");
+      const p = document.querySelector(".resultat");
       let preview = document.querySelector("#preview");
       preview.setAttribute("src", freader.result);
-      resultat.innerHTML = freader.result;
+      p.innerHTML = freader.result;
       //console.log(freader.result);
     };
     freader.readAsDataURL(input.files[0]);
@@ -23,7 +23,7 @@ export default function App() {
         capture="camera"
         onChange={onloadHandler}
       />
-      <img src="" id="preview" alt="" width="250" height="250" />
+      <img src="" id="preview" alt="" max-width="150" max-height="150" />
 
       <p className="resultat"></p>
     </div>
