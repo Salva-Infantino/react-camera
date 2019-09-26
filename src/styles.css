@@ -1,0 +1,21 @@
+input {
+  display: block;
+  width: 100px;
+  height: 100px;
+  border: 2px solid black;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+input::before {
+  content: "📷";
+  font-size: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  background-color: white;
+}
+input:hover {
+  border-color: silver;
+}

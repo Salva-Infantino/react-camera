@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Resizer from "react-image-file-resizer";
+import "./styles.css";
 
 export default function App() {
   //const fileChangedHandler = fileChangedHandler.bind(this);
