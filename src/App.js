@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 
 export default function App() {
   const onloadHandler = ev => {
@@ -29,4 +29,54 @@ export default function App() {
       <p className="resultat"></p>
     </div>
   );
+}*/
+
+import React from "react";
+import ReactDOM from "react-dom";
+import Resizer from "react-image-file-resizer";
+
+export default function App() {
+  //const fileChangedHandler = fileChangedHandler.bind(this);
+
+  const fileChangedHandler = event => {
+    var fileInput = false;
+    if (event.target.files[0]) {
+      fileInput = true;
+    }
+    if (fileInput) {
+      Resizer.imageFileResizer(
+        event.target.files[0],
+        100,
+        100,
+        "JPEG",
+        50,
+        0,
+        uri => {
+          document.querySelector("img").setAttribute("src", uri);
+          document.querySelector(".p").innerHTML = uri.replace(
+            "data:image/jpeg;base64,",
+            ""
+          );
+          console.log(uri.replace("data:image/jpeg;base64,", ""));
+        },
+        "base64"
+      );
+    }
+  };
+
+  return (
+    <div className="App">
+      <h1>title</h1>
+      <img src="" alt="" max-width="200" height="200" />
+      <input
+        type="file"
+        accept="image/*"
+        capture
+        onChange={fileChangedHandler}
+      />
+      <p className="p"></p>
+    </div>
+  );
 }
+
+ReactDOM.render(<App />, document.getElementById("root"));
