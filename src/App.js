@@ -1,36 +1,3 @@
-/*import React from "react";
-
-export default function App() {
-  const onloadHandler = ev => {
-    let input = ev.target;
-    var freader = new FileReader();
-    freader.onload = () => {
-      const p = document.querySelector(".resultat");
-      let preview = document.querySelector("#preview");
-      preview.setAttribute("src", freader.result);
-      p.innerHTML =
-        "'" + freader.result.replace("data:image/jpeg;base64,", "") + "'";
-      //console.log(freader.result);
-    };
-    freader.readAsDataURL(input.files[0]);
-  };
-  return (
-    <div className="App">
-      <h1>Image upload preview</h1>
-      <input
-        type="file"
-        name="file"
-        accept="image/*"
-        capture="camera"
-        onChange={onloadHandler}
-      />
-      <img src="" id="preview" alt="" width="150" height="150" />
-
-      <p className="resultat"></p>
-    </div>
-  );
-}*/
-
 import React from "react";
 import ReactDOM from "react-dom";
 import Resizer from "react-image-file-resizer";
@@ -40,7 +7,7 @@ export default function App() {
 
   const fileChangedHandler = event => {
     const p = document.querySelector(".p");
-    p.replace(p, "");
+    p.innerHTML.replace(p, "");
     var fileInput = false;
     if (event.target.files[0]) {
       fileInput = true;
@@ -54,9 +21,10 @@ export default function App() {
         75,
         90,
         uri => {
+          let uriNew = uri.replace("data:image/jpeg;base64,", "");
           document.querySelector("img").setAttribute("src", uri);
-          p.innerHTML = uri.replace("data:image/jpeg;base64,", "");
-          console.log(uri.replace("data:image/jpeg;base64,", ""));
+          p.innerHTML = uriNew;
+          //console.log(uriNew);
         },
         "base64"
       );
