@@ -39,6 +39,8 @@ export default function App() {
   //const fileChangedHandler = fileChangedHandler.bind(this);
 
   const fileChangedHandler = event => {
+    const p = document.querySelector(".p");
+    p.replace(p, "");
     var fileInput = false;
     if (event.target.files[0]) {
       fileInput = true;
@@ -53,10 +55,7 @@ export default function App() {
         90,
         uri => {
           document.querySelector("img").setAttribute("src", uri);
-          document.querySelector(".p").innerHTML = uri.replace(
-            "data:image/jpeg;base64,",
-            ""
-          );
+          p.innerHTML = uri.replace("data:image/jpeg;base64,", "");
           console.log(uri.replace("data:image/jpeg;base64,", ""));
         },
         "base64"
