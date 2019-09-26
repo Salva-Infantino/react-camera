@@ -8,7 +8,8 @@ export default function App() {
       const p = document.querySelector(".resultat");
       let preview = document.querySelector("#preview");
       preview.setAttribute("src", freader.result);
-      p.innerHTML = freader.result.replace("data:image/jpeg;base64,", "");
+      p.innerHTML =
+        "'" + freader.result.replace("data:image/jpeg;base64,", "") + "'";
       //console.log(freader.result);
     };
     freader.readAsDataURL(input.files[0]);
