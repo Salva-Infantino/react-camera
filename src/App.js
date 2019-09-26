@@ -24,7 +24,7 @@ export default function App() {
         capture="camera"
         onChange={onloadHandler}
       />
-      <img src="" id="preview" alt="" />
+      <img src="" id="preview" alt="" width="150" height="150" />
 
       <p className="resultat"></p>
     </div>
