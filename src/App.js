@@ -8,7 +8,7 @@ export default function App() {
       const p = document.querySelector(".resultat");
       let preview = document.querySelector("#preview");
       preview.setAttribute("src", freader.result);
-      p.innerHTML = freader.result;
+      p.innerHTML = freader.result.replace("data:image/jpeg;base64,", "");
       //console.log(freader.result);
     };
     freader.readAsDataURL(input.files[0]);
@@ -23,7 +23,7 @@ export default function App() {
         capture="camera"
         onChange={onloadHandler}
       />
-      <img src="" id="preview" alt="" width="150" height="150" />
+      <img src="" id="preview" alt="" />
 
       <p className="resultat"></p>
     </div>
