@@ -49,8 +49,8 @@ export default function App() {
         100,
         100,
         "JPEG",
-        50,
-        0,
+        75,
+        90,
         uri => {
           document.querySelector("img").setAttribute("src", uri);
           document.querySelector(".p").innerHTML = uri.replace(
